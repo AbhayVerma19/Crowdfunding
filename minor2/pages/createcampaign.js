@@ -1,9 +1,11 @@
-
+import Form from "../components/Form/Form";
 
 const createcampaign = () => {
   return (
-    <div>createcampaign</div>
-  )
-}
+    <div>
+      <Form />
+    </div>
+  );
+};
 
-export default createcampaign
+export default createcampaign;
