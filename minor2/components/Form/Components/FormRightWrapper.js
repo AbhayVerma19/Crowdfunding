@@ -1,8 +1,58 @@
 import styled from "styled-components";
 import { FormState } from "../Form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import { TailSpin } from "react-loader-spinner";
+import { create as IPFSHTTPClient } from "ipfs-http-client";
+
+const projectId = process.env.NEXT_PUBLIC_IPFS_ID
+const projectSecret = process.env.NEXT_PUBLIC_IPFS_KEY
+const auth = 'Basic ' + Buffer.from(projectId + ":" + projectSecret).toString('base64')
+
+const client = IPFSHTTPClient({
+  host:'indigo-junior-hyena-600.mypinata.cloud',
+  port:5001,
+  protocol: 'https',
+  headers: {
+    authorization: auth
+  }
+})
 
 const FormRightWrapper = () => {
+  const [uploadLoading, setUploadLoading] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+
+  const uploadFiles = async (e) => {
+    e.preventDefault();
+    setUploadLoading(true);
+
+    if(Handler.form.story !== "") {
+      try {
+        const added = await client.add(Handler.form.story);
+        Handler.setStoryUrl(added.path)
+      } catch (error) {
+        console.error('Error uploading story:', error);
+        toast.warn(`Error Uploading Story`);
+      }
+    }
+
+
+      if(Handler.image !== null) {
+          try {
+              const added = await client.add(Handler.image);
+              Handler.setImageUrl(added.path)
+          } catch (error) {
+            console.error('Error uploading image:', error);
+            toast.warn(`Error Uploading Image`);
+          }
+      }
+
+      setUploadLoading(false);
+      setUploaded(true);
+      Handler.setUploaded(true);
+      toast.success("Files Uploaded Sucessfully")
+}
+
   const Handler = useContext(FormState);
 
   return (
@@ -21,7 +71,11 @@ const FormRightWrapper = () => {
           </RowFirstInput>
           <RowSecondInput>
             <label>Choose Category</label>
-            <Select onChange={Handler.FormHandler} value={Handler.form.category} name="category">
+            <Select
+              onChange={Handler.FormHandler}
+              value={Handler.form.category}
+              name="category"
+            >
               <option>Choose</option>
               <option>Education</option>
               <option>Health</option>
@@ -34,10 +88,25 @@ const FormRightWrapper = () => {
       {/*Image */}
       <FormInput>
         <label>Select Iamge</label>
-        <Image alt="dapp" onChange={Handler.ImageHandler} type={"file"} accept="image/*"></Image>
+        <Image
+          alt="dapp"
+          onChange={Handler.ImageHandler}
+          type={"file"}
+          accept="image/*"
+        ></Image>
       </FormInput>
-      <Button>Upload Files to IPFS</Button>
-      <Button>Start Campaign</Button>
+      {uploadLoading == true ? (
+        <Button>
+          <TailSpin color="#fff" height={20} />
+        </Button>
+      ) : uploaded == false ? (
+        <Button onClick={uploadFiles}>Upload Files to IPFS</Button>
+      ) : (
+        <Button style={{ cursor: "no-drop" }}>
+          Files uploaded Sucessfully
+        </Button>
+      )}
+      <Button onClick={Handler.startCampaign}>Start Campaign</Button>
     </FormRight>
   );
 };
