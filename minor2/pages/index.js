@@ -3,7 +3,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PaidIcon from '@mui/icons-material/Paid';
 import EventIcon from '@mui/icons-material/Event';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { ethers } from 'ethers';
 import CampaignFactory from '../artifacts/contracts/Campaign.sol/CampaignFactory.json'
 import { useState } from 'react';

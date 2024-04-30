@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {ethers} from 'ethers';
 import CampaignFactory from '../artifacts/contracts/Campaign.sol/CampaignFactory.json'
 import Campaign from '../artifacts/contracts/Campaign.sol/Campaign.json'
