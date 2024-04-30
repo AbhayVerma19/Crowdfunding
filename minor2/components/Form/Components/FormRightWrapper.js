@@ -9,14 +9,12 @@ const projectId = process.env.NEXT_PUBLIC_IPFS_ID
 const projectSecret = process.env.NEXT_PUBLIC_IPFS_KEY
 const auth = 'Basic ' + Buffer.from(projectId + ":" + projectSecret).toString('base64')
 
-const client = IPFSHTTPClient({
-  host:'indigo-junior-hyena-600.mypinata.cloud',
-  port:5001,
-  protocol: 'https',
-  headers: {
-    authorization: auth
-  }
-})
+const client = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.PINATA_JWT}`,
+      },
+    });
 
 const FormRightWrapper = () => {
   const [uploadLoading, setUploadLoading] = useState(false);
