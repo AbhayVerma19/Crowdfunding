@@ -36,7 +36,7 @@ export default function Index({AllData, HealthData, EducationData,AnimalData,Oth
             <Image 
               alt="Crowdfunding dapp"
               layout='fill' 
-              src={"https://crowdfunding.infura-ipfs.io/ipfs/" + e.image} 
+              src={"https://gateway.pinata.cloud/ipfs/Qmcq8e9az16WQPMoy7EjwPhgsZNZJRmsWGK1NipJWRM7e3"} 
             />
           </CardImg>
           <Title>

@@ -14,7 +14,7 @@ export default function Detail({Data, DonationsData}) {
 
   useEffect(() => {
     const Request = async () => {
-      let storyData;
+      let storyData="Hello from Abhay. i am Poor";
       
       await window.ethereum.request({ method: 'eth_requestAccounts' });
       const Web3provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -31,8 +31,8 @@ export default function Detail({Data, DonationsData}) {
         provider
       );
 
-      fetch('https://crowdfunding.infura-ipfs.io/ipfs/' + Data.storyUrl)
-            .then(res => res.text()).then(data => storyData = data);
+      //fetch('.//story.txt')
+      //    .then(res => res.text()).then(data => storyData = data);
 
       const MyDonations = contract.filters.donated(Address);
       const MyAllDonations = await contract.queryFilter(MyDonations);
@@ -74,13 +74,14 @@ export default function Detail({Data, DonationsData}) {
 
   return (
     <DetailWrapper>
+    <time datetime="2016-10-25" suppressHydrationWarning />
       <LeftContainer>
         <ImageSection>
           <Image
             alt="crowdfunding dapp"
             layout="fill"
             src={
-              "https://crowdfunding.infura-ipfs.io/ipfs/" + Data.image
+              "https://gateway.pinata.cloud/ipfs/Qmcq8e9az16WQPMoy7EjwPhgsZNZJRmsWGK1NipJWRM7e3"
             }
           />
         </ImageSection>
@@ -109,10 +110,12 @@ export default function Detail({Data, DonationsData}) {
             <DonationTitle>Recent Donation</DonationTitle>
             {DonationsData.map((e) => {
               return (
+                
                 <Donation key={e.timestamp}>
+                <time datetime="2016-10-25" suppressHydrationWarning />
                 <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
                 <DonationData>{e.amount} Matic</DonationData>
-                <DonationData>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
+                <DonationData >{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
               </Donation>
               )
             })
@@ -123,8 +126,12 @@ export default function Detail({Data, DonationsData}) {
             {mydonations.map((e) => {
               return (
                 <Donation key={e.timestamp}>
+                <time datetime="2016-10-25" suppressHydrationWarning />
+                
                 <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
                 <DonationData>{e.amount} Matic</DonationData>
+                <time datetime="2016-10-25" suppressHydrationWarning />
+
                 <DonationData>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
               </Donation>
               )
