@@ -54,7 +54,7 @@ const FormRightWrapper = () => {
   const Handler = useContext(FormState);
 
   return (
-    <FormRight>
+    <FormRight suppressHydrationWarning>
       <FormInput>
         <FormRow>
           <RowFirstInput>

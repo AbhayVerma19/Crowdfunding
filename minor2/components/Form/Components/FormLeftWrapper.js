@@ -8,7 +8,7 @@ const FormLeftWrapper = () => {
   const Handler = useContext(FormState);
 
   return (
-    <FormLeft>
+    <FormLeft suppressHydrationWarning>
         <FormInput>
             <label>Campaign Title</label>
             <Input onChange={Handler.FormHandler} value={Handler.form.campaignTitle} placeholder="Campaign Title" name="campaignTitle">

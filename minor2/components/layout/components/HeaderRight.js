@@ -9,7 +9,7 @@ const HeaderRight = () => {
   const ThemeToggler = useContext(App);
 
   return (
-    <HeaderRightWrapper>
+    <HeaderRightWrapper suppressHydrationWarning>
     <Wallet/>
       <ThemeToggle onClick={ThemeToggler.changeTheme}>
         {ThemeToggler.theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}

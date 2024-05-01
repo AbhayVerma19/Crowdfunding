@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <App.Provider value={{ changeTheme, theme }}>
+    <App.Provider value={{ changeTheme, theme }} suppressHydrationWarning>
       <ThemeProvider theme={themes[theme]}>
         <ToastContainer/>
         <LayoutWrapper>

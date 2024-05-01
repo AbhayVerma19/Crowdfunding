@@ -12,8 +12,10 @@ import Link from 'next/link'
 export default function Index({AllData, HealthData, EducationData,AnimalData,OtherData}) {
   const [filter, setFilter] = useState(AllData);
 
+  
+
   return (
-    <HomeWrapper>
+    <HomeWrapper suppressHydrationWarning>
 
       {/* Filter Section */}
       <FilterWrapper>

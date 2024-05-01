@@ -92,9 +92,9 @@ const Form = () => {
         setAddress,
         startCampaign,
         setUploaded
-      }}
+      } } suppressHydrationWarning
     >
-      <FormWrapper>
+      <FormWrapper suppressHydrationWarning>
         <FormMain>
           {loading == true ? (
             address == "" ? (

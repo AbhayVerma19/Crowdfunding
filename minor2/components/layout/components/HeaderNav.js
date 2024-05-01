@@ -6,7 +6,7 @@ const HeaderNav = () => {
   const Router = useRouter();
 
   return (
-    <HeaderNavWrapper>
+    <HeaderNavWrapper suppressHydrationWarning>
       <Link passHref href={'/'}><HeaderNavLinks active={Router.pathname == "/" ? true : false} >
         Campaigns
       </HeaderNavLinks></Link>

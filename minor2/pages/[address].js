@@ -73,8 +73,8 @@ export default function Detail({Data, DonationsData}) {
   }
 
   return (
-    <DetailWrapper>
-    <time datetime="2016-10-25" suppressHydrationWarning />
+    <DetailWrapper suppressHydrationWarning>
+    
       <LeftContainer>
         <ImageSection>
           <Image
@@ -107,15 +107,14 @@ export default function Detail({Data, DonationsData}) {
         </FundsData>
         <Donated>
           <LiveDonation>
-            <DonationTitle>Recent Donation</DonationTitle>
+            <DonationTitle suppressHydrationWarning>Recent Donation</DonationTitle>
             {DonationsData.map((e) => {
               return (
                 
-                <Donation key={e.timestamp}>
-                <time datetime="2016-10-25" suppressHydrationWarning />
+                <Donation suppressHydrationWarning key={e.timestamp} >    
                 <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
                 <DonationData>{e.amount} Matic</DonationData>
-                <DonationData >{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
+                <DonationData suppressHydrationWarning>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
               </Donation>
               )
             })
@@ -125,14 +124,12 @@ export default function Detail({Data, DonationsData}) {
             <DonationTitle>My Past Donation</DonationTitle>
             {mydonations.map((e) => {
               return (
-                <Donation key={e.timestamp}>
-                <time datetime="2016-10-25" suppressHydrationWarning />
+                <Donation  suppressHydrationWarning key={e.timestamp}>
                 
                 <DonationData>{e.donar.slice(0,6)}...{e.donar.slice(39)}</DonationData>
                 <DonationData>{e.amount} Matic</DonationData>
-                <time datetime="2016-10-25" suppressHydrationWarning />
 
-                <DonationData>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
+                <DonationData suppressHydrationWarning>{new Date(e.timestamp * 1000).toLocaleString()}</DonationData>
               </Donation>
               )
             })

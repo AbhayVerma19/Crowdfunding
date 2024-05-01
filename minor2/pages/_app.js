@@ -3,7 +3,7 @@ import "../style/global.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <Layout suppressHydrationWarning>
       <Component {...pageProps} />
     </Layout>
   );

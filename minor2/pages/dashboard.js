@@ -47,7 +47,7 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <HomeWrapper>
+    <HomeWrapper suppressHydrationWarning>
 
       {/* Cards Container */}
       <CardsWrapper>

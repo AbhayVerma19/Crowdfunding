@@ -40,7 +40,7 @@ const Wallet = () => {
   };
 
   return (
-    <ConnectWalletWrapper onClick={connectWallet}>
+    <ConnectWalletWrapper onClick={connectWallet} suppressHydrationWarning>
       {balance == '' ? <Balance></Balance> : <Balance>{balance.slice(0,4)} Matic</Balance> }
       {address == '' ? <Address>Connect Wallet</Address> : <Address>{address.slice(0,6)}...{address.slice(39)}</Address>}
     </ConnectWalletWrapper>
