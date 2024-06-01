@@ -26,8 +26,8 @@ const FormRightWrapper = () => {
 
     if(Handler.form.story !== "") {
       try {
-        const added = await client.add(Handler.form.story);
-        Handler.setStoryUrl(added.path)
+        //const added = await client.add(Handler.form.story);
+        Handler.setStoryUrl('http://127.0.0.1:5501/Crowdfunding/story.html')
       } catch (error) {
         console.error('Error uploading story:', error);
         toast.warn(`Error Uploading Story`);
@@ -37,8 +37,8 @@ const FormRightWrapper = () => {
 
       if(Handler.image !== null) {
           try {
-              const added = await client.add(Handler.image);
-              Handler.setImageUrl(added.path)
+              //const added = await client.add(Handler.image);
+              Handler.setImageUrl("https://gateway.pinata.cloud/ipfs/Qmcq8e9az16WQPMoy7EjwPhgsZNZJRmsWGK1NipJWRM7e3")
           } catch (error) {
             console.error('Error uploading image:', error);
             toast.warn(`Error Uploading Image`);
@@ -54,7 +54,7 @@ const FormRightWrapper = () => {
   const Handler = useContext(FormState);
 
   return (
-    <FormRight>
+    <FormRight suppressHydrationWarning>
       <FormInput>
         <FormRow>
           <RowFirstInput>

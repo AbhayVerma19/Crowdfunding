@@ -5,7 +5,7 @@ import HeaderRight from "./components/HeaderRight";
 
 const Header = () => {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper suppressHydrationWarning>
       <HeaderLogo />
       <HeaderNav />
       <HeaderRight />

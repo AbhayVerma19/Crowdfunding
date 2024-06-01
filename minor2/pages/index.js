@@ -3,7 +3,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PaidIcon from '@mui/icons-material/Paid';
 import EventIcon from '@mui/icons-material/Event';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { ethers } from 'ethers';
 import CampaignFactory from '../artifacts/contracts/Campaign.sol/CampaignFactory.json'
 import { useState } from 'react';
@@ -12,8 +12,10 @@ import Link from 'next/link'
 export default function Index({AllData, HealthData, EducationData,AnimalData,OtherData}) {
   const [filter, setFilter] = useState(AllData);
 
+  
+
   return (
-    <HomeWrapper>
+    <HomeWrapper suppressHydrationWarning>
 
       {/* Filter Section */}
       <FilterWrapper>
@@ -36,7 +38,7 @@ export default function Index({AllData, HealthData, EducationData,AnimalData,Oth
             <Image 
               alt="Crowdfunding dapp"
               layout='fill' 
-              src={"https://crowdfunding.infura-ipfs.io/ipfs/" + e.image} 
+              src={"https://gateway.pinata.cloud/ipfs/Qmcq8e9az16WQPMoy7EjwPhgsZNZJRmsWGK1NipJWRM7e3"} 
             />
           </CardImg>
           <Title>

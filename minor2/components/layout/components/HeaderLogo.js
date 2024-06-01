@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HeaderLogo = () => {
-  return <Logo>CrowdFunder</Logo>;
+  return <Logo suppressHydrationWarning>CrowdFunder</Logo>;
 };
 
 const Logo = styled.h1`

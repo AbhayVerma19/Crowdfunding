@@ -3,7 +3,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PaidIcon from '@mui/icons-material/Paid';
 import EventIcon from '@mui/icons-material/Event';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { ethers } from 'ethers';
 import CampaignFactory from '../artifacts/contracts/Campaign.sol/CampaignFactory.json'
 import { useEffect, useState } from 'react';
@@ -47,7 +47,7 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <HomeWrapper>
+    <HomeWrapper suppressHydrationWarning>
 
       {/* Cards Container */}
       <CardsWrapper>
@@ -56,11 +56,12 @@ export default function Dashboard() {
       {campaignsData.map((e) => {
         return (
           <Card key={e.title}>
+          <time datetime="2016-10-25" suppressHydrationWarning />
           <CardImg>
             <Image 
               alt="crowdfunding dapp"
               layout='fill' 
-              src={"https://crowdfunding.infura-ipfs.io/ipfs/" + e.image} 
+              src={"https://gateway.pinata.cloud/ipfs/Qmcq8e9az16WQPMoy7EjwPhgsZNZJRmsWGK1NipJWRM7e3"} 
             />
           </CardImg>
           <Title>
@@ -76,7 +77,7 @@ export default function Dashboard() {
           </CardData>
           <CardData>
             <Text><EventIcon /></Text>
-            <Text>{new Date(e.timeStamp * 1000).toLocaleString()}</Text>
+            <Text><time datetime="2016-10-25" suppressHydrationWarning />{new Date(e.timeStamp * 1000).toLocaleString()}</Text>
           </CardData>
           <Link passHref href={'/' + e.address}><Button>
             Go to Campaign
